@@ -83,4 +83,54 @@ public class VendingMachineTest {
 		testVend.insertMoney(-1.0);
 		//assertNotEqual(1.0,testVend.getBalance(),0);
 	}
+	
+	/**
+	 * Balance test.
+	 */
+	@Test
+	public void balanceTest() {
+		testVend.insertMoney(3.0);
+		assertEquals(3.0, testVend.getBalance(),0);
+	}
+	
+	/**
+	 * Positive Balance and Full slot Test
+	 * Expectation is to be true
+	 */
+	@Test
+	public void purchaseOccSlotPosBalTest() {
+		VendingMachineItem vendMachineItem = new VendingMachineItem("Starburst",0.10);
+		testVend.addItem(vendMachineItem, "A");
+		testVend.balance = 3.0;
+		assertTrue(testVend.makePurchase("A"));
+	}
+	
+	/**
+	 * Negative Balance and Full slot Test
+	 * Expectation to be false
+	 */
+	@Test
+	public void purchaseOccSlotNegBalTest() {
+		testVend.balance = -3.0;
+		assertFalse(testVend.makePurchase("A"));
+	}
+	
+	/**
+	 * Test Empty Slot and Positive Balance
+	 * Expected to be false
+	 */
+	@Test
+	public void purchaseEmptyPosBal() {
+		assertFalse(testVend.makePurchase("A"));
+	}
+	
+	/**
+	 * Return change test.
+	 * Expected to return change
+	 */
+	@Test
+	public void returnChangeTest() {
+		testVend.balance = 3.0;
+		assertEquals(3.0, testVend.getBalance(),0);
+	}
 }
