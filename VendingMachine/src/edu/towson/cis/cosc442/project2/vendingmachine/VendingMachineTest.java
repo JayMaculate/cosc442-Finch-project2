@@ -67,6 +67,7 @@ public class VendingMachineTest {
 	
 	/**
 	 * Test to make sure the amount inserted is positive.
+	 * 
 	 */
 	@Test
 	public void posMoneyTest() {

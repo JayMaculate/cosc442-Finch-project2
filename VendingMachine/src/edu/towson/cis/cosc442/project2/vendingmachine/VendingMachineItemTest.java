@@ -47,7 +47,7 @@ public class VendingMachineItemTest {
 		assertEquals(0.10,testVendItem.getPrice(), 0.10);
 	}
 	
-	@Test
+	@Test (expected = Exception.class)
 	public void testGetPrice2() {
 		//Should be incorrect
 		assertEquals(0.01,testVendItem.getPrice(), 0.01);
